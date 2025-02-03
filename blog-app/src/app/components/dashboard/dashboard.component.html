@@ -1,0 +1,31 @@
+<div class="post-list-container">
+  <div class="header">
+    <h2>Dashboard</h2>
+    <button routerLink="/create-post" class="create-btn">
+      <i class="fas fa-plus"></i> Create Post
+    </button>
+  </div>
+
+  <div class="posts-grid">
+    <ng-container>
+      <div *ngFor="let post of posts" class="post-card">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.content | slice:0:150 }}...</p>
+        <div class="post-meta">
+          <span>{{ post.createdAt | date: "MM/dd/yyyy" }}</span>
+          <div class="actions">
+            <a [routerLink]="['/post', post.id]" class="view-btn">
+              <i class="fas fa-eye">view</i>
+            </a>
+            <a [routerLink]="['/post', post.id, 'edit']" class="edit-btn">
+              <i class="fas fa-edit">edit</i>
+            </a>
+            <button (click)="deletePost(post.id)" class="delete-btn">
+              <i class="fas fa-trash">delete</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

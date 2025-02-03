@@ -1,0 +1,94 @@
+.post-list-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+  
+      h2 {
+        margin: 0;
+        color: #333;
+      }
+  
+      .create-btn {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+  
+        &:hover {
+          background-color: #45a049;
+        }
+      }
+    }
+  
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+  
+      .post-card {
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  
+        h3 {
+          margin: 0 0 10px;
+          color: #333;
+        }
+  
+        p {
+          color: #666;
+          margin: 0 0 15px;
+          line-height: 1.5;
+        }
+  
+        .post-meta {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          color: #888;
+          font-size: 14px;
+  
+          .actions {
+            display: flex;
+            gap: 8px;
+  
+            button {
+              padding: 6px;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+              color: white;
+  
+              &.view-btn {
+                background-color: #2196F3;
+              }
+  
+              &.edit-btn {
+                background-color: #FFC107;
+              }
+  
+              &.delete-btn {
+                background-color: #F44336;
+              }
+  
+              &:hover {
+                opacity: 0.9;
+              }
+            }
+          }
+        }
+      }
+    }
+}

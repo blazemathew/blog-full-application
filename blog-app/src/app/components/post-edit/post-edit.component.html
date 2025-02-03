@@ -1,0 +1,55 @@
+<div class="post-edit-container">
+    <div class="header">
+      <h2>Edit Post</h2>
+    </div>
+  
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="post-form">
+      <!-- Error Alert -->
+      <div *ngIf="error" class="error-alert">
+        {{ error }}
+      </div>
+  
+      <!-- Title Field -->
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          id="title"
+          type="text"
+          formControlName="title"
+          placeholder="Enter post title"
+          [class.is-invalid]="postForm.get('title')?.touched && postForm.get('title')?.invalid"
+        >
+        <div class="validation-feedback" *ngIf="postForm.get('title')?.touched && postForm.get('title')?.invalid">
+          <span *ngIf="postForm.get('title')?.errors?.['required']">Title is required</span>
+          <span *ngIf="postForm.get('title')?.errors?.['minlength']">Title must be at least 3 characters</span>
+        </div>
+      </div>
+  
+      <!-- Content Field -->
+      <div class="form-group">
+        <label for="content">Content</label>
+        <textarea
+          id="content"
+          formControlName="content"
+          placeholder="Write your post content"
+          rows="10"
+          [class.is-invalid]="postForm.get('content')?.touched && postForm.get('content')?.invalid"
+        ></textarea>
+        <div class="validation-feedback" *ngIf="postForm.get('content')?.touched && postForm.get('content')?.invalid">
+          <span *ngIf="postForm.get('content')?.errors?.['required']">Content is required</span>
+          <span *ngIf="postForm.get('content')?.errors?.['minlength']">Content must be at least 10 characters</span>
+        </div>
+      </div>
+  
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button type="button" (click)="onCancel()" class="cancel-btn" [disabled]="loading">
+          Cancel
+        </button>
+        <button type="submit" class="submit-btn" [disabled]="postForm.invalid || loading">
+          <span *ngIf="!loading">Save Changes</span>
+          <span *ngIf="loading">Saving...</span>
+        </button>
+      </div>
+    </form>
+  </div>
